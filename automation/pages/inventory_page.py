@@ -38,6 +38,7 @@ class InventoryPage(BasePage):
         self._item(name).find_element(
             By.CSS_SELECTOR, 'button[data-test^="remove"]'
         ).click()
+        self.wait.until(lambda driver: not driver.find_elements(*self.CART_BADGE))
 
     def open_item(self, name):
         self._item(name).find_element(*self.ITEM_NAMES).click()
@@ -48,3 +49,4 @@ class InventoryPage(BasePage):
 
     def open_cart(self):
         self.click(self.CART_LINK)
+
